@@ -8,10 +8,10 @@ def main():
         sys.exit(1)
 
     try:
-        width = int(sys.argv[1])
-        height = int(sys.argv[2])
-        length = int(sys.argv[3])
-        mass = int(sys.argv[4])
+        width = sys.argv[1]
+        height = sys.argv[2]
+        length = sys.argv[3]
+        mass = sys.argv[4]
 
         print(sort(width, height, length, mass))
     except ValueError as e:

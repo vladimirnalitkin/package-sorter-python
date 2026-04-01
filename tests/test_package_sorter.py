@@ -8,7 +8,7 @@ from package_sorter import sort
 
 
 @pytest.mark.parametrize("width,height,length,mass,expected", [
-    (1, 1, 1, 1, "STANDARD"),           # not bulky, not heavy
+    (1, 1, 1, 1.4, "STANDARD"),           # not bulky, not heavy
     (10, 20, 30, 5, "STANDARD"),         # not bulky, not heavy
     (10, 20, 30, 20, "SPECIAL"),         # not bulky, heavy
     (100, 100, 100, 10, "SPECIAL"),      # bulky (volume=1M exactly), not heavy
@@ -55,3 +55,7 @@ def test_raises_for_non_positive_length(length):
 def test_raises_for_non_positive_mass(mass):
     with pytest.raises(ValueError):
         sort(10, 10, 10, mass)
+
+def test_raises_for_non_numeric_mass():
+    with pytest.raises(ValueError):
+        sort(10, 10, 10, 'dsd')
